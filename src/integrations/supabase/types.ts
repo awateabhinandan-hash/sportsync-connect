@@ -14,16 +14,326 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      academies: {
+        Row: {
+          address: string | null
+          contact_email: string | null
+          contact_phone: string | null
+          created_at: string
+          description: string | null
+          facilities: string[] | null
+          id: string
+          image_url: string | null
+          latitude: number | null
+          location: string | null
+          longitude: number | null
+          name: string
+          rating: number | null
+          sports: string[] | null
+          timing: string | null
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          address?: string | null
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          description?: string | null
+          facilities?: string[] | null
+          id?: string
+          image_url?: string | null
+          latitude?: number | null
+          location?: string | null
+          longitude?: number | null
+          name: string
+          rating?: number | null
+          sports?: string[] | null
+          timing?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          address?: string | null
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          description?: string | null
+          facilities?: string[] | null
+          id?: string
+          image_url?: string | null
+          latitude?: number | null
+          location?: string | null
+          longitude?: number | null
+          name?: string
+          rating?: number | null
+          sports?: string[] | null
+          timing?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      chat_messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          role: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      coaches: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          experience_years: number | null
+          hourly_rate: number | null
+          id: string
+          location: string | null
+          name: string
+          rating: number | null
+          specialization: string | null
+          sport: string
+          updated_at: string
+          user_id: string | null
+          verified: boolean | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          experience_years?: number | null
+          hourly_rate?: number | null
+          id?: string
+          location?: string | null
+          name: string
+          rating?: number | null
+          specialization?: string | null
+          sport: string
+          updated_at?: string
+          user_id?: string | null
+          verified?: boolean | null
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          experience_years?: number | null
+          hourly_rate?: number | null
+          id?: string
+          location?: string | null
+          name?: string
+          rating?: number | null
+          specialization?: string | null
+          sport?: string
+          updated_at?: string
+          user_id?: string | null
+          verified?: boolean | null
+        }
+        Relationships: []
+      }
+      event_registrations: {
+        Row: {
+          event_id: string
+          id: string
+          registered_at: string
+          status: string
+          user_id: string
+        }
+        Insert: {
+          event_id: string
+          id?: string
+          registered_at?: string
+          status?: string
+          user_id: string
+        }
+        Update: {
+          event_id?: string
+          id?: string
+          registered_at?: string
+          status?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "event_registrations_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      events: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          description: string | null
+          event_date: string
+          event_type: string
+          id: string
+          max_participants: number | null
+          registration_link: string | null
+          registration_open: boolean | null
+          sport: string
+          title: string
+          updated_at: string
+          venue: string | null
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          event_date: string
+          event_type: string
+          id?: string
+          max_participants?: number | null
+          registration_link?: string | null
+          registration_open?: boolean | null
+          sport: string
+          title: string
+          updated_at?: string
+          venue?: string | null
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          event_date?: string
+          event_type?: string
+          id?: string
+          max_participants?: number | null
+          registration_link?: string | null
+          registration_open?: boolean | null
+          sport?: string
+          title?: string
+          updated_at?: string
+          venue?: string | null
+        }
+        Relationships: []
+      }
+      performance_records: {
+        Row: {
+          endurance_score: number | null
+          id: string
+          notes: string | null
+          player_id: string
+          recorded_at: string
+          recorded_by: string | null
+          skill_score: number | null
+          speed_score: number | null
+        }
+        Insert: {
+          endurance_score?: number | null
+          id?: string
+          notes?: string | null
+          player_id: string
+          recorded_at?: string
+          recorded_by?: string | null
+          skill_score?: number | null
+          speed_score?: number | null
+        }
+        Update: {
+          endurance_score?: number | null
+          id?: string
+          notes?: string | null
+          player_id?: string
+          recorded_at?: string
+          recorded_by?: string | null
+          skill_score?: number | null
+          speed_score?: number | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          location: string | null
+          phone: string | null
+          sport: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          location?: string | null
+          phone?: string | null
+          sport?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          location?: string | null
+          phone?: string | null
+          sport?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "player" | "coach" | "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +460,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["player", "coach", "admin"],
+    },
   },
 } as const
